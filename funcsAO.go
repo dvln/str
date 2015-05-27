@@ -86,6 +86,18 @@ func Capitalize(s string) string {
 	return strings.ToUpper(s[0:1]) + strings.ToLower(s[1:])
 }
 
+// CapitalizeAll uppercases the first char of each word in s and lowercases
+// the rest of the characters
+func CapitalizeAll(s string) string {
+	words := strings.Split(s, " ")
+	for i, word := range words {
+		word = strings.ToUpper(word[0:1]) + strings.ToLower(word[1:])
+		words[i] = word
+	}
+	line := strings.Join(words, " ")
+	return line
+}
+
 // CharAt returns a string from the character at the specified position.
 func CharAt(s string, index int) string {
 	l := len(s)
@@ -220,6 +232,21 @@ func Humanize(s string) string {
 	s = strings.Replace(s, "_", " ", -1)
 	s = strings.TrimSpace(s)
 	s = Capitalize(s)
+	return s
+}
+
+// UpperHumanize transforms s into a human friendly form (w/uppercase 1st
+// letters on *all* words in the string)
+func UpperHumanize(s string) string {
+	if s == "" {
+		return s
+	}
+	s = Underscore(s)
+	var humanizeRe = regexp.MustCompile(`_id$`)
+	s = humanizeRe.ReplaceAllString(s, "")
+	s = strings.Replace(s, "_", " ", -1)
+	s = strings.TrimSpace(s)
+	s = CapitalizeAll(s)
 	return s
 }
 

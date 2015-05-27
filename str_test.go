@@ -205,6 +205,16 @@ func ExampleHumanize() {
 	// 3: The humanize string method
 }
 
+func ExampleUpperHumanize() {
+	eg(1, UpperHumanize("the_humanize_string_method"))
+	eg(2, UpperHumanize("ThehumanizeStringMethod"))
+	eg(3, UpperHumanize("the humanize string method"))
+	// Output:
+	// 1: The Humanize String Method
+	// 2: Thehumanize String Method
+	// 3: The Humanize String Method
+}
+
 func ExampleIif() {
 	eg(1, Iif(true, "T", "F"))
 	eg(2, Iif(false, "T", "F"))
