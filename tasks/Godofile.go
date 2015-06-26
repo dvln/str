@@ -5,7 +5,7 @@ import (
 	f "github.com/mgutz/goa/filter"
 	. "github.com/mgutz/godo"
 	"github.com/mgutz/godo/util"
-	"github.com/mgutz/str"
+	"github.com/dvln/str"
 )
 
 // Project is local project.
